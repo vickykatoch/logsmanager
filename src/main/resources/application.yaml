@@ -1,6 +1,27 @@
-
 server:
-    port: 8081
+  port: 8080
 
-# spring:
-#     datasource: 
+spring:
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.avam.logsmanager.dialect.SQLiteDialect
+        hbm2ddl:
+          # none|validate|update|create|update|create-drop
+          auto: create-drop
+        show_sql: true
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    url: 'jdbc:sqlite:/Users/balwinderkatoch/volumes/java/db/log-data.db'
+  application:
+    name: logsmanager
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 1GB
+      max-request-size: 1GB
+logging:
+  level:
+    root: DEBUG
+    org.avam.*: DEBUG
+    org.springframework.*: DEBUG
